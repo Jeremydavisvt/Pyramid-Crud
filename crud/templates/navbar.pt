@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li tal:condition="request.has_permission('registered') == False"><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li tal:condition="request.has_permission('registered')"><a href="#"><span class="glyphicon glyphicon-user"></span> ${request.session.display_name}</a></li>
+                <li tal:condition="request.has_permission('registered') == False"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li tal:condition="request.has_permission('registered')"><a href="/logut"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="profilenotify" tal:repeat="message request.session.pop_flash()">
+    <div style="text-align: center;padding-top:5px;">
+        ${structure:message}
+    </div>
+</div>

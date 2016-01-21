@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head tal:define="head load: head.pt" metal:use-macro="head"></head>
+    <body>
+        <div tal:define="navBar load: navBar.pt" metal:use-macro="navBar"></div>
+        <div id="bottom">
+            <table>
+                <tr tal:repeat="message request.session.pop_flash()">
+                    <td><bold>${message}</bold><br></td>
+                </tr>
+            </table>
+            <div class="bottom" align="center">
+                <a href="/newuser">Add a user</a>
+                <table class="table-striped table-bordered table-hover" style="width: 50%; margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date of Birth</th>
+                            <th>Zip code</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:repeat="user users">
+                            <td style="text-align: center"><a href="/user/${user.uid}">${user.first_name} ${user.last_name}</a></td>
+                            <td style="text-align: center">${user.email}</td>
+                            <td style="text-align: center">${user.dob}</td>
+                            <td style="text-align: center">${user.zip_code}</td>
+                            <td style="text-align: center"><a href="/delete/${user.uid}">Delete User</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

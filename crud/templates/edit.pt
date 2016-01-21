@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head tal:define="head load: head.pt" metal:use-macro="head"></head>
+    <body>
+        <div class="wrap">
+            <div tal:define="navBar load: navBar.pt" metal:use-macro="navBar"></div>
+            <div class="content">
+                <div class="profile_details" style="height: 75px">
+                    <div style="float:left; padding-left: 5px;">
+                        <p style="margin-bottom: 0px;">${user.first_name} ${user.last_name}</p>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    <input type="email" name="email" value="${user.email}">
+                    <input type="password" name="password" value="${user.password}">
+                    <input type="text" name="firstname" value="${user.first_name}">
+                    <input type="text" name="lastname" value="${user.last_name}">
+                    <input type="date" name="dob" value="${user.dob}">
+                    <input type="text" name="zipcode" value="${user.zip_code}">
+                    <input type="submit" value="Submit" name="form_submitted">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

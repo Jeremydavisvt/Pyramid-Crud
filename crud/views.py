@@ -27,7 +27,6 @@ def user(request):
         getuser.last_name = request.POST['lastname']
         getuser.dob = request.POST['dob']
         getuser.zip_code = request.POST['zipcode']
-        print request.POST
         return HTTPFound(location='/')
 
     return {'user': getuser}

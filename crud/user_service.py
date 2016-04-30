@@ -35,7 +35,6 @@ def login(request):
             user = DBSession.query(Users).filter(Users.email == loginstring).first()
             pass_encoded = str(user.password).encode()
             if user is not None:
-                print bcrypt.hashpw(password, pass_encoded)
                 if bcrypt.hashpw(password, pass_encoded) == pass_encoded:
                     request.session['email'] = str(user.email)
                     headers = remember(request, loginstring)

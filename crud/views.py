@@ -39,7 +39,7 @@ def newuser(request):
         password = bcrypt.hashpw(str(request.POST['password']), bcrypt.gensalt(prefix=b"2a"))
         first_name = request.POST['firstname']
         last_name = request.POST['lastname']
-        dob = request.POST['dob']
+        dob = datetime.datetime.strptime(request.POST['dob'], '%Y-%m-%d')
         zip_code = request.POST['zipcode']
         if DBSession.query(Users).filter(Users.email == email).first():
             request.session.flash("Email address in use.")
